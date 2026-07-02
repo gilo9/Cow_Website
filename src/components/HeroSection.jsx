@@ -91,13 +91,13 @@ export default function HeroSection({ setCurrentPage, scrollToLocation, scrollTo
           display: inline-flex;
           align-items: center;
           gap: 8px;
-          background: rgba(255, 255, 255, 0.05);
-          border: 1px solid var(--border-color);
+          background: rgba(255, 255, 255, 0.08);
+          border: 1px solid rgba(255, 255, 255, 0.15);
           padding: 8px 16px;
           border-radius: 50px;
           font-size: 0.85rem;
           font-weight: 600;
-          color: var(--accent);
+          color: hsl(43, 93%, 53%);
           margin-bottom: 24px;
           letter-spacing: 0.02em;
           text-transform: uppercase;
@@ -107,8 +107,8 @@ export default function HeroSection({ setCurrentPage, scrollToLocation, scrollTo
           width: 8px;
           height: 8px;
           border-radius: 50%;
-          background: var(--accent);
-          box-shadow: 0 0 10px var(--accent);
+          background: hsl(43, 93%, 53%);
+          box-shadow: 0 0 10px hsl(43, 93%, 53%);
           animation: pulse 2s infinite;
         }
 
@@ -124,19 +124,20 @@ export default function HeroSection({ setCurrentPage, scrollToLocation, scrollTo
           letter-spacing: -0.03em;
           margin-bottom: 20px;
           line-height: 1.15;
+          color: #ffffff;
           text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
         }
 
         .highlight-text {
-          color: var(--accent);
-          background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+          color: hsl(43, 93%, 53%);
+          background: linear-gradient(135deg, hsl(43, 93%, 53%) 0%, hsl(354, 70%, 42%) 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
 
         .hero-description {
           font-size: 1.15rem;
-          color: var(--text-muted);
+          color: rgba(255, 255, 255, 0.85);
           margin-bottom: 40px;
           max-width: 680px;
           line-height: 1.65;
@@ -147,6 +148,17 @@ export default function HeroSection({ setCurrentPage, scrollToLocation, scrollTo
           display: flex;
           flex-wrap: wrap;
           gap: 16px;
+        }
+
+        .hero-actions .btn-outline {
+          color: rgba(255, 255, 255, 0.9);
+          border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .hero-actions .btn-outline:hover {
+          background: rgba(255, 255, 255, 0.08);
+          color: hsl(43, 93%, 53%);
+          border-color: hsl(43, 93%, 53%);
         }
 
         @media (max-width: 768px) {

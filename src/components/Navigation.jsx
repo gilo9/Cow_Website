@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Menu, X, MapPin } from 'lucide-react';
+import { Menu, X, MapPin, Sun, Moon } from 'lucide-react';
 
-export default function Navigation({ currentPage, setCurrentPage, scrollToLocation }) {
+export default function Navigation({ currentPage, setCurrentPage, scrollToLocation, scrollToSports, theme, setTheme }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleNav = (page) => {
@@ -34,6 +34,19 @@ export default function Navigation({ currentPage, setCurrentPage, scrollToLocati
             Menu
           </button>
           <button 
+            className="nav-link"
+            onClick={scrollToSports}
+          >
+            What's On
+          </button>
+          <button 
+            className="theme-toggle-btn"
+            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            aria-label="Toggle theme"
+          >
+            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+          <button 
             className="btn btn-outline btn-sm btn-find-us"
             onClick={scrollToLocation}
           >
@@ -42,10 +55,19 @@ export default function Navigation({ currentPage, setCurrentPage, scrollToLocati
           </button>
         </div>
 
-        {/* Mobile Toggle */}
-        <button className="mobile-toggle" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle navigation menu">
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        {/* Mobile Actions */}
+        <div className="mobile-actions">
+          <button 
+            className="theme-toggle-btn mobile-theme-btn"
+            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            aria-label="Toggle theme"
+          >
+            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+          <button className="mobile-toggle" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle navigation menu">
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu Dropdown */}
@@ -62,6 +84,15 @@ export default function Navigation({ currentPage, setCurrentPage, scrollToLocati
             onClick={() => handleNav('menu')}
           >
             Menu
+          </button>
+          <button 
+            className="mobile-nav-link"
+            onClick={() => {
+              setIsOpen(false);
+              scrollToSports();
+            }}
+          >
+            What's On
           </button>
           <button 
             className="btn btn-accent mobile-find-btn"
@@ -176,8 +207,34 @@ export default function Navigation({ currentPage, setCurrentPage, scrollToLocati
           font-size: 0.85rem;
         }
 
-        .mobile-toggle {
+        .theme-toggle-btn {
+          background: transparent;
+          border: 1px solid var(--border-color);
+          color: var(--text-muted);
+          width: 36px;
+          height: 36px;
+          border-radius: 50%;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: var(--transition-fast);
+        }
+
+        .theme-toggle-btn:hover {
+          color: var(--accent);
+          border-color: var(--accent);
+          background: rgba(255, 255, 255, 0.03);
+          transform: rotate(15deg);
+        }
+
+        .mobile-actions {
           display: none;
+          align-items: center;
+          gap: 12px;
+        }
+
+        .mobile-toggle {
           background: transparent;
           border: none;
           color: var(--text-light);
@@ -224,8 +281,8 @@ export default function Navigation({ currentPage, setCurrentPage, scrollToLocati
           .desktop-menu {
             display: none;
           }
-          .mobile-toggle {
-            display: block;
+          .mobile-actions {
+            display: flex;
           }
           .mobile-menu {
             display: flex;

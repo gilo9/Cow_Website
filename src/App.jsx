@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navigation from './components/Navigation';
 import HeroSection from './components/HeroSection';
 import FeaturesGrid from './components/FeaturesGrid';
@@ -9,6 +9,11 @@ import Footer from './components/Footer';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
+  const [theme, setTheme] = useState('light');
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
 
   const scrollToLocation = () => {
     if (currentPage !== 'home') {
@@ -43,6 +48,9 @@ export default function App() {
         currentPage={currentPage} 
         setCurrentPage={setCurrentPage} 
         scrollToLocation={scrollToLocation}
+        scrollToSports={scrollToSports}
+        theme={theme}
+        setTheme={setTheme}
       />
 
       {/* Main Page Routing */}
@@ -74,7 +82,7 @@ export default function App() {
           </div>
         ) : (
           /* Menu & Pricing View */
-          <MenuRoute />
+          <MenuRoute scrollToSports={scrollToSports} />
         )}
       </main>
 

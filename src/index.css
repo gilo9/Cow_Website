@@ -130,7 +130,7 @@ a {
 
 .btn-primary {
   background: var(--primary);
-  color: var(--text-light);
+  color: #ffffff;
   box-shadow: 0 4px 15px rgba(var(--primary-rgb), 0.3);
 }
 
@@ -142,7 +142,7 @@ a {
 
 .btn-accent {
   background: var(--accent);
-  color: var(--text-dark);
+  color: hsl(220, 15%, 15%);
   box-shadow: 0 4px 15px rgba(var(--accent-rgb), 0.2);
 }
 
@@ -216,4 +216,66 @@ a {
 #root {
   display: block;
   min-height: 100vh;
+}
+
+/* ==========================================
+   Lighter Theme Selectors (White & Red)
+   ========================================== */
+:root[data-theme="light"] {
+  --bg-dark: hsl(36, 30%, 96%);
+  --bg-card: hsl(0, 0%, 100%);
+  --bg-card-hover: hsl(36, 25%, 92%);
+  --bg-glass: rgba(250, 248, 245, 0.85);
+  
+  --primary: hsl(354, 70%, 42%);
+  --primary-rgb: 180, 30, 36;
+  --primary-hover: hsl(354, 80%, 45%);
+  --accent: hsl(43, 93%, 48%);
+  --accent-rgb: 242, 174, 27;
+  
+  --text-light: hsl(220, 15%, 12%);
+  --text-muted: hsl(220, 10%, 42%);
+  --text-dark: hsl(36, 30%, 96%);
+  
+  --border-color: rgba(0, 0, 0, 0.1);
+  --border-focus: rgba(180, 30, 36, 0.4);
+}
+
+/* Scoreboard Light Mode Adaptations */
+:root[data-theme="light"] .scoreboard-container {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06), inset 0 0 10px rgba(0, 0, 0, 0.02);
+}
+:root[data-theme="light"] .scoreboard-header {
+  background: #f4f6fa;
+  border-bottom-color: rgba(0, 0, 0, 0.1);
+}
+:root[data-theme="light"] .fixture-row {
+  border-bottom-color: rgba(0, 0, 0, 0.05);
+}
+:root[data-theme="light"] .fixture-row:hover {
+  background: rgba(0, 0, 0, 0.015);
+}
+:root[data-theme="light"] .team {
+  color: var(--text-light);
+}
+:root[data-theme="light"] .channel-badge {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+/* Map Light Mode Adaptations */
+:root[data-theme="light"] .map-iframe {
+  filter: grayscale(0.2) contrast(1.1);
+}
+:root[data-theme="light"] .map-frame-wrapper:hover .map-iframe {
+  filter: none;
+}
+:root[data-theme="light"] .station-transit {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+/* Original Menu Light Mode Adaptations */
+:root[data-theme="light"] .original-menu-body {
+  background: #faf8f5;
 }

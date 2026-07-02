@@ -4,7 +4,7 @@ import FoodList from './FoodList';
 import DrinksList from './DrinksList';
 import barSnacksMenu from '../assets/BarSnacksMenu.jpg';
 
-export default function MenuRoute() {
+export default function MenuRoute({ scrollToSports }) {
   const [activeTab, setActiveTab] = useState('all');
   const [searchText, setSearchText] = useState('');
   const [showOriginalMenu, setShowOriginalMenu] = useState(false);
@@ -24,9 +24,13 @@ export default function MenuRoute() {
         {/* Title */}
         <div className="section-header text-center">
           <h2 className="section-title">Drinks & Food <span className="text-accent">Menu</span></h2>
-          <p className="section-subtitle text-muted">
+          <p className="section-subtitle text-muted mb-4">
             Enjoy value draught beers, premium wines, and fresh home-cooked bar snacks at table-side value.
           </p>
+          <div className="whats-on-redirect" onClick={scrollToSports}>
+            <span className="redirect-icon">📅</span>
+            <span>Looking for our match schedule? <strong>View Live Sports & What's On</strong></span>
+          </div>
         </div>
 
         {/* Filter Toolbar */}
@@ -122,6 +126,33 @@ export default function MenuRoute() {
           background-color: var(--bg-dark);
           padding-top: 100px;
           min-height: 90vh;
+        }
+
+        .whats-on-redirect {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          margin-top: 16px;
+          background: rgba(242, 174, 27, 0.05);
+          border: 1px solid rgba(242, 174, 27, 0.15);
+          padding: 8px 18px;
+          border-radius: 50px;
+          font-size: 0.9rem;
+          color: var(--accent);
+          cursor: pointer;
+          transition: var(--transition-fast);
+          user-select: none;
+        }
+
+        .whats-on-redirect:hover {
+          background: rgba(242, 174, 27, 0.12);
+          border-color: var(--accent);
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .mb-4 {
+          margin-bottom: 8px;
         }
 
         .menu-toolbar {

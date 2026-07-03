@@ -9,7 +9,7 @@ import Footer from './components/Footer';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState('dark');
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
